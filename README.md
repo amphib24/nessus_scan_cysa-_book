@@ -32,22 +32,20 @@ critical vulnerabilities and 1 of the vulnerabilities rated as high, just to bri
 <p>-CVE-2024-21891: This one also has to do with an attacker being able to access files they should not be able to reach by creating a path to trick the system into allowing access to files that should be protected. For a more detailed look into this CVE check out NIST's NVD for <a href="https://nvd.nist.gov/vuln/detail/CVE-2024-21891">CVE-2024-21891</a></p>
 <p>-CVE-2024-21890: This issue has to do with using wildcard characters in file paths. if used improperly broader access than intended may be given. For a deeper look at this issue checkout NIST's NVD for <a href="https://nvd.nist.gov/vuln/detail/CVE-2024-21890">CVE-2024-21890</a></p>
 
+  <img width="1704" height="748" alt="nodejs_cvss" src="https://github.com/user-attachments/assets/5f75adc2-4bfa-4351-832a-0c7a737656be" />
 
-
-
-  
 <p>Next I want to break down the CVSS vecotrs to give more insight into what that string of characters means and hopefully provide some insight into why it is important to understanding why this vulnerability is rated as critical. So for a reminder on what the vector is , its highlighted in yellow on the above photo and is this string of characters AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N, which represents a group of metrics used as part of the scoring criteria.</p>
-<p>-AV = Attack Vector, which is how the attacker would exploit the vulnerability. The N = Network, which means that the attacker can exploit the vulnerability remotley over a network.</p>
-<p>-AC = Attack Complexity, which is the difficulty of actually exploiting the vulnerability. The L = Low, and meand that it has a low level of complexity and does not require any specialized conitions.</p>re
-<p>-PR = Privileges Required, and represents the type of account access the attacker would need to actually exploit the vulnerability. The N = none, menaing that there is no need for an attacker to authenticate in order to conduct their attack.</p>
-<p>-UI = User Interaction, and represents whethere the attacker would need to involve another human in the process for the attack to be successful. The N = None required, meaning the attacker can go at this solo with no additional help.</p>
-<p>-S = Scope, which determines whethere the vulnerability can affect system components beyond the scope of the vulnerability. The U = Unchanged, meaning that if exploited, the vulnerability can only affect resources managed by the same security authority.</p>
-<p>-C = Confidentiality, which describes the type of information disclosure that may occur if an attacker is successful. H = High, Meaning that if exploited, all information on the system is compromised.</p>
-<p>-I = Integrity, which describes the type of alteration of the information might occur. H = High,  meaning that the attacker would be able to modify the data/ information at will if the exploit is successful.</p>
-<p>A= Availability, which describes the level or type of disruption that may occur if an exploit was successful. N = None, which means that there will be no impact to availability. </p>
+<p>-First we have AV:N. The AV = Attack Vector, which is how the attacker would exploit the vulnerability. The N = Network, which means that the attacker can exploit the vulnerability remotley over a network.</p>
+<p>-Next is AC:L. The AC = Attack Complexity, which is the difficulty of actually exploiting the vulnerability. The L = Low, and meand that it has a low level of complexity and does not require any specialized conitions.</p>
+<p>-Then we have PR:N. The PR = Privileges Required, and represents the type of account access the attacker would need to actually exploit the vulnerability. The N = none, menaing that there is no need for an attacker to authenticate in order to conduct their attack.</p>
+<p>-Following that is UI:N. The UI = User Interaction, and represents whethere the attacker would need to involve another human in the process for the attack to be successful. The N = None required, meaning the attacker can go at this solo with no additional help.</p>
+<p>-After that is S:U. The S = Scope, which determines whethere the vulnerability can affect system components beyond the scope of the vulnerability. The U = Unchanged, meaning that if exploited, the vulnerability can only affect resources managed by the same security authority.</p>
+<p>-Then we have C:H. The C = Confidentiality, which describes the type of information disclosure that may occur if an attacker is successful. H = High, Meaning that if exploited, all information on the system is compromised.</p>
+<p>-Then I:H. The I = Integrity, which describes the type of alteration of the information might occur. H = High,  meaning that the attacker would be able to modify the data/ information at will if the exploit is successful.</p>
+<p>-Lastly it shows A:N. The A= Availability, which describes the level or type of disruption that may occur if an exploit was successful. N = None, which means that there will be no impact to availability. </p>
 
 #### Remediation
-Update
+The remidations is highlighted in green on the above photo. It requires updating Node.js to version 18.19.1, 20.11.1, 21.6.2, or later. 
 
 
 
@@ -62,15 +60,15 @@ As shown in the scan results in the image above, this vulnerability provide an a
   <img width="1302" height="571" alt="cvss_score" src="https://github.com/user-attachments/assets/6359b9a7-3610-4b01-8ece-1f6ca404f74f" />
  
 <p>In the photo above below you will see(highlighted in yellow) the CVSS v3.0 score of 7.5 along with the "vector" listed as AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H. I would like to provide details on what this vector is indicating piece by piece to provide a deeper understanding of what this string of characters represents.</p>
-<p>-First we see the AV:N,  AV = Attack Vector and the N = Network meaning that an attacker would be able to exploit this vulnerability remotley</p> 
-<p>-Next we have AC:L, AC = Attack Complexity(the difficulty of actually exploiting the vulnerability), and the L = Low, meaning that exploiting the vulnerability requires no special conditions that would be hard to find.</p>
-<p>-Next we see the PR:N, PR = Priveleges Required(account access needed for attack), N = None, meaning no authentication is needed for the exploit to occur.</p> 
-<p>- Next we see the UI:N, UI = User interaction(whether the attacker needs to invole another human in the attack), N = None, meaning the attacker can work alone.</p>
-<p>- The S:U breaks down as S = scope(whether or not the vulnerability can effect components beyond the scope of the vulnerability), and U = unchanged, meaning that the vulnerability can only affect resources managed by the same security authority.</p>
-<p>-C:N means that if the vulnerability is exploited, confidentiality(C) will not be impacted (N) </p>
-<p>-I:N means that if the vulnerability is exploited, integrtiy(I) will not be impacted (N) </p>
-<p>-A:H meand that if the vulnerability is exploited, availability(A) will be comepletly shut down(H)</p>
+<p>-First we see the AV:N, The AV = Attack Vector, which is how the attacker would exploit the vulnerability. The N = Network, which means that the attacker can exploit the vulnerability remotley over a network.</p> 
+<p>-Next we have AC:L, The AC = Attack Complexity, which is the difficulty of actually exploiting the vulnerability. The L = Low, and meand that it has a low level of complexity and does not require any specialized conitions.</p>
+<p>-Next we see the PR:N. The PR = Privileges Required, and represents the type of account access the attacker would need to actually exploit the vulnerability. The N = none, menaing that there is no need for an attacker to authenticate in order to conduct their attack.</p></p> 
+<p>- Next we see the UI:N, The UI = User Interaction, and represents whethere the attacker would need to involve another human in the process for the attack to be successful. The N = None required, meaning the attacker can go at this solo with no additional help.</p>
+<p>- The S:U breaks down as S = Scope, which determines whethere the vulnerability can affect system components beyond the scope of the vulnerability. The U = Unchanged, meaning that if exploited, the vulnerability can only affect resources managed by the same security authority.</p>
+<p>-C:N The C = Confidentiality, which describes the type of information disclosure that may occur if an attacker is successful. N = None wich means the confidentiality facotr will not be impacted.</p>
+<p>-I:N The I = Integrity, which describes the type of alteration of the information might occur. N = None meaning that integrtiy will not be impacted if exploited. </p>
+<p>-A:H The A= Availability, which describes the level or type of disruption that may occur if an exploit was successful meand that if the vulnerability is exploited. H = High meaning that, availability will be comepletly shut down if exploited.</p>
 
 #### Remidiation
-<p>The good news is as you can see highlighted in green there is a easy way to remidiate this vulnerability and the is to upgrade to a Rack version 2.2.14/ 3.0.16/ 3.1.14 or later</p>
+<p>The good news is as you can see highlighted in green there is a easy way to remidiate this vulnerability and the is to upgrade to a Rack version 2.2.14, 3.0.16, 3.1.14, or later.</p>
 
