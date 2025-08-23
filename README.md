@@ -19,12 +19,23 @@ on to Kali linux, and then use the scanner to conduct an vulnerability scan on a
 <p>Overall 71 of the results were rated as info, 3 rated at medium, 5 rated at high, and 2 rated at critical. Below I will give a brief analysis of 1 of the
 critical vulnerabilities and 1 of the vulnerabilities rated as high, just to briefly showcase my analysis</p>
 
+#### Vulnerability (Critical)
+
+  <img width="1697" height="642" alt="critical_nodejs_vuln" src="https://github.com/user-attachments/assets/0ea0e3bb-1975-48e5-835a-0c66c7633a51" />
+
+<p>As shown in the photo above the system is running an outdated version of Node.js, which comes with a list of 7 vulnerabilities wrapped into one, leading to a CVSS score of 9.8. I will break them all down by their CVE ID's. After the listed CVE ID's I will then proceed to break down the CVSS vector(AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N) so that you may get a better understanding of what it actually represents.</p>
+<p>-CVE-2024-21892: The main concern with this vulnerability is it allows unprivileged users on Linux to inject code that inherits a process's elevated privileges. For a more detailed overview visit NIST's page for <a href="https://nvd.nist.gov/vuln/detail/CVE-2024-21892">CVE-2024-21892</a> </p>
+<p>-CVE-2024-22019: this will allow an attacker to casue resource exhaustion leading to a DoS attack using a specially crafted HTTP request. For more detailed information visit NIST's page for <a href="https://nvd.nist.gov/vuln/detail/CVE-2024-22019">CVE-2024-22019</a></p>
+<p>-CVE-2024-21896: This poses a risk for a path traversal allowing an attacker to manipulate file paths allowing them to potentially gain access to unauthorized files. For more information vist NIST's page for <a href ="https://nvd.nist.gov/vuln/detail/CVE-2024-21896">CVE-2024-21896</a></p>
+<p>-CVE-2024-22017: The main concern with this vulnerability is unauthorized privilege escalation. The flaw allows programs to keep elevated privileges even after they have been dropped down. For more information on this vulneranibility visit NIST's page for <a href="https://nvd.nist.gov/vuln/detail/CVE-2024-22017">CVE-2024-22017</a></p>
+
+
 
 
 
 
 #### Vulnerability (High)
-<img width="1307" height="592" alt="ruby_rack_vuln" src="https://github.com/user-attachments/assets/54c292ff-6590-4f31-8237-fafd4bbff028" />
+  <img width="1307" height="592" alt="ruby_rack_vuln" src="https://github.com/user-attachments/assets/54c292ff-6590-4f31-8237-fafd4bbff028" />
 
 <p>The vulnerability with a severity score of high was the Ruby Rack < 2.2.14/3.0.16/3.1.14 DoS Vulnerability(meaning Ruby Rack version is less than versions 2.2.14/3.0.16/3.1.14) also known as CVE-2025-46727. 
 As shown in the scan results in the image above, this vulnerability provide an attacker the ability to cause a Dos situation by sending a specially crafted HTTP request, leading to memory exhaustion or pin CPU resources stalling or crashing the server. For more details please click the link here which will bring you to NIST's page for <a href="https://nvd.nist.gov/vuln/detail/CVE-2025-46727">CVE-2025-46727<a/>.</p>
