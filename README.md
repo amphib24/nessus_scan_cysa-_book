@@ -24,11 +24,30 @@ critical vulnerabilities and 1 of the vulnerabilities rated as high, just to bri
   <img width="1697" height="642" alt="critical_nodejs_vuln" src="https://github.com/user-attachments/assets/0ea0e3bb-1975-48e5-835a-0c66c7633a51" />
 
 <p>As shown in the photo above the system is running an outdated version of Node.js, which comes with a list of 7 vulnerabilities wrapped into one, leading to a CVSS score of 9.8. I will break them all down by their CVE ID's. After the listed CVE ID's I will then proceed to break down the CVSS vector(AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N) so that you may get a better understanding of what it actually represents.</p>
-<p>-CVE-2024-21892: The main concern with this vulnerability is it allows unprivileged users on Linux to inject code that inherits a process's elevated privileges. For a more detailed overview visit NIST's page for <a href="https://nvd.nist.gov/vuln/detail/CVE-2024-21892">CVE-2024-21892</a> </p>
-<p>-CVE-2024-22019: this will allow an attacker to casue resource exhaustion leading to a DoS attack using a specially crafted HTTP request. For more detailed information visit NIST's page for <a href="https://nvd.nist.gov/vuln/detail/CVE-2024-22019">CVE-2024-22019</a></p>
-<p>-CVE-2024-21896: This poses a risk for a path traversal allowing an attacker to manipulate file paths allowing them to potentially gain access to unauthorized files. For more information vist NIST's page for <a href ="https://nvd.nist.gov/vuln/detail/CVE-2024-21896">CVE-2024-21896</a></p>
-<p>-CVE-2024-22017: The main concern with this vulnerability is unauthorized privilege escalation. The flaw allows programs to keep elevated privileges even after they have been dropped down. For more information on this vulneranibility visit NIST's page for <a href="https://nvd.nist.gov/vuln/detail/CVE-2024-22017">CVE-2024-22017</a></p>
+<p>-CVE-2024-21892: The main concern with this vulnerability is it allows unprivileged users on Linux to inject code that inherits a process's elevated privileges. For a more detailed overview visit NIST's NVD for <a href="https://nvd.nist.gov/vuln/detail/CVE-2024-21892">CVE-2024-21892</a> </p>
+<p>-CVE-2024-22019: this will allow an attacker to casue resource exhaustion leading to a DoS attack using a specially crafted HTTP request. For more detailed information visit NIST's NVD for <a href="https://nvd.nist.gov/vuln/detail/CVE-2024-22019">CVE-2024-22019</a></p>
+<p>-CVE-2024-21896: This poses a risk for a path traversal allowing an attacker to manipulate file paths allowing them to potentially gain access to unauthorized files. For more information vist NIST's NVD for <a href ="https://nvd.nist.gov/vuln/detail/CVE-2024-21896">CVE-2024-21896</a></p>
+<p>-CVE-2024-22017: The main concern with this vulnerability is unauthorized privilege escalation. The flaw allows programs to keep elevated privileges even after they have been dropped down. For more information on this vulneranibility visit NIST's NVD for <a href="https://nvd.nist.gov/vuln/detail/CVE-2024-22017">CVE-2024-22017</a></p>
+<p>-CVE-2023-46809:This vulnerability exploits a weakness in how data is decrypted in node.js using outdated versions of OpenSSL. This method is known as the "Marvin Attack" and may lead to an attacker being able to read sensitive data or compromise secure communications. Check out NISTs NVD on <a href="https://nvd.nist.gov/vuln/detail/CVE-2023-46809">CVE-2023-46809</a> for more details.</p>
+<p>-CVE-2024-21891: This one also has to do with an attacker being able to access files they should not be able to reach by creating a path to trick the system into allowing access to files that should be protected. For a more detailed look into this CVE check out NIST's NVD for <a href="https://nvd.nist.gov/vuln/detail/CVE-2024-21891">CVE-2024-21891</a></p>
+<p>-CVE-2024-21890: This issue has to do with using wildcard characters in file paths. if used improperly broader access than intended may be given. For a deeper look at this issue checkout NIST's NVD for <a href="https://nvd.nist.gov/vuln/detail/CVE-2024-21890">CVE-2024-21890</a></p>
 
+
+
+
+  
+<p>Next I want to break down the CVSS vecotrs to give more insight into what that string of characters means and hopefully provide some insight into why it is important to understanding why this vulnerability is rated as critical. So for a reminder on what the vector is , its highlighted in yellow on the above photo and is this string of characters AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N, which represents a group of metrics used as part of the scoring criteria.</p>
+<p>-AV = Attack Vector, which is how the attacker would exploit the vulnerability. The N = Network, which means that the attacker can exploit the vulnerability remotley over a network.</p>
+<p>-AC = Attack Complexity, which is the difficulty of actually exploiting the vulnerability. The L = Low, and meand that it has a low level of complexity and does not require any specialized conitions.</p>re
+<p>-PR = Privileges Required, and represents the type of account access the attacker would need to actually exploit the vulnerability. The N = none, menaing that there is no need for an attacker to authenticate in order to conduct their attack.</p>
+<p>-UI = User Interaction, and represents whethere the attacker would need to involve another human in the process for the attack to be successful. The N = None required, meaning the attacker can go at this solo with no additional help.</p>
+<p>-S = Scope, which determines whethere the vulnerability can affect system components beyond the scope of the vulnerability. The U = Unchanged, meaning that if exploited, the vulnerability can only affect resources managed by the same security authority.</p>
+<p>-C = Confidentiality, which describes the type of information disclosure that may occur if an attacker is successful. H = High, Meaning that if exploited, all information on the system is compromised.</p>
+<p>-I = Integrity, which describes the type of alteration of the information might occur. H = High,  meaning that the attacker would be able to modify the data/ information at will if the exploit is successful.</p>
+<p>A= Availability, which describes the level or type of disruption that may occur if an exploit was successful. N = None, which means that there will be no impact to availability. </p>
+
+#### Remediation
+Update
 
 
 
