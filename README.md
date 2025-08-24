@@ -2,9 +2,10 @@
 
 ## Description
 &nbsp;&nbsp;&nbsp;&nbsp;This project was part of the Sybex CompTIA CYSA+ Study Guide written by Mike Chapple and David Seidl. The task was to download and install Tenable Nessus vulnerability scanner 
-on to Kali Linux, and then use the scanner to conduct a vulnerability scan on a server. I choose to use a Metasploitanle2 server running on a VM to use as my target instead of using one of the
-cloud service providers listed in the book. The server was on the same VM network as my Kali machine. I found this project to be a fun way to get hands on experience with everything I was learning 
-while studying for the certification.
+on to Kali Linux, and then use the scanner to conduct a vulnerability scan on a server. I choose to use a Metasploitable 2 server running on a VM to use as my target instead of using one of the
+cloud service providers listed in the book. I configured a NAT network on VirtualBox so that the server was on the same network as my Kali machine. I actaully overlooked that step the first time around and accidentally scanned
+the Kali machine. Overall I found this project to be a fun way to get hands on experience with everything I was learning while studying for the certification.
+
 ## Tools used
 
 -Oracle VirtualBox
@@ -18,7 +19,7 @@ while studying for the certification.
 ## Purpose   
 
 &nbsp;&nbsp;&nbsp;&nbsp;The purpose of this task was for me to get hands on experience running and analyzing a vulnerability scan using Nessus. At the time I was conducting this activity I was in the process 
-of preparing for the CompTIA CYSA+ certification while enrolled at WGU. For educational purposes I will be choosing two of the vulnerabilities found during the scan. One will be rated as a critical vulnerability,
+of preparing for the CompTIA CYSA+ certification while enrolled at WGU. For educational purposes I will be choosing two of the vulnerabilities found during the scan to analyze and report on. One will be rated as a critical vulnerability,
 and the other will be rated as a high vulnerability. 
 
 ## Process 
@@ -41,30 +42,45 @@ and the other will be rated as a high vulnerability.
 
 <img width="1718" height="623" alt="metasploitable_redo_70" src="https://github.com/user-attachments/assets/cdc5bd0a-101b-40b5-836d-9dd84c964c8d" />
 
-#### Vulnerability (Critical)
+### Vulnerability 1 (Critical)
 
-  <img width="1697" height="642" alt="critical_nodejs_vuln" src="https://github.com/user-attachments/assets/0ea0e3bb-1975-48e5-835a-0c66c7633a51" />
+ 
+  <img width="1726" height="535" alt="metasploitable_redo_critical_vuln_1" src="https://github.com/user-attachments/assets/4035b4b2-fd5a-4a3b-b63c-d7d658c662be" />
 
-<p>As shown in the photo above the system is running an outdated version of Node.js, which comes with a list of 7 vulnerabilities wrapped into one, leading to a CVSS score of 9.8. I will break them all down by their CVE ID's. After the listed CVE ID's I will then proceed to break down the CVSS vector(AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N) so that you may get a better understanding of what it actually represents.</p>
-<p>-CVE-2024-21892: The main concern with this vulnerability is it allows unprivileged users on Linux to inject code that inherits a process's elevated privileges. For a more detailed overview visit NIST's NVD for <a href="https://nvd.nist.gov/vuln/detail/CVE-2024-21892">CVE-2024-21892</a> </p>
-<p>-CVE-2024-22019: this will allow an attacker to casue resource exhaustion leading to a DoS attack using a specially crafted HTTP request. For more detailed information visit NIST's NVD for <a href="https://nvd.nist.gov/vuln/detail/CVE-2024-22019">CVE-2024-22019</a></p>
-<p>-CVE-2024-21896: This poses a risk for a path traversal allowing an attacker to manipulate file paths allowing them to potentially gain access to unauthorized files. For more information vist NIST's NVD for <a href ="https://nvd.nist.gov/vuln/detail/CVE-2024-21896">CVE-2024-21896</a></p>
-<p>-CVE-2024-22017: The main concern with this vulnerability is unauthorized privilege escalation. The flaw allows programs to keep elevated privileges even after they have been dropped down. For more information on this vulneranibility visit NIST's NVD for <a href="https://nvd.nist.gov/vuln/detail/CVE-2024-22017">CVE-2024-22017</a></p>
-<p>-CVE-2023-46809:This vulnerability exploits a weakness in how data is decrypted in node.js using outdated versions of OpenSSL. This method is known as the "Marvin Attack" and may lead to an attacker being able to read sensitive data or compromise secure communications. Check out NISTs NVD on <a href="https://nvd.nist.gov/vuln/detail/CVE-2023-46809">CVE-2023-46809</a> for more details.</p>
-<p>-CVE-2024-21891: This one also has to do with an attacker being able to access files they should not be able to reach by creating a path to trick the system into allowing access to files that should be protected. For a more detailed look into this CVE check out NIST's NVD for <a href="https://nvd.nist.gov/vuln/detail/CVE-2024-21891">CVE-2024-21891</a></p>
-<p>-CVE-2024-21890: This issue has to do with using wildcard characters in file paths. if used improperly broader access than intended may be given. For a deeper look at this issue checkout NIST's NVD for <a href="https://nvd.nist.gov/vuln/detail/CVE-2024-21890">CVE-2024-21890</a></p>
 
-  <img width="1704" height="748" alt="nodejs_cvss" src="https://github.com/user-attachments/assets/5f75adc2-4bfa-4351-832a-0c7a737656be" />
+ &nbsp;&nbsp;&nbsp;&nbsp;If you look at the above photo, I have circled the severity rating in red, both on the left side of the photo and the right. This vulnerability is a weakness in the remote SSH key due to a lack of entropy (randomness) in the remote version of OpenSSL. This allows an attacker the ability to easily obtain the private part of the key, allowing them to decipher a remote session, or set up a man in the middle attack which would allow for eavesdropping.  I have circled the Critical Vulnerabilities and Exposure (referred to as CVE )  number in red at the bottom. To access more information on this vulnerability please click the link <a href="https://nvd.nist.gov/vuln/detail/CVE-2008-0166">CVE-2008-0166</a>. Lastly, if you pay attention to the Vulnerability Information section circled in yellow on the photo below. It lets us know that there are available exploits existing for this vulnerability. 
 
-<p>Next I want to break down the CVSS vecotrs to give more insight into what that string of characters means and hopefully provide some insight into why it is important to understanding why this vulnerability is rated as critical. So for a reminder on what the vector is , its highlighted in yellow on the above photo and is this string of characters AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N, which represents a group of metrics used as part of the scoring criteria.</p>
-<p>-First we have AV:N. The AV = Attack Vector, which is how the attacker would exploit the vulnerability. The N = Network, which means that the attacker can exploit the vulnerability remotley over a network.</p>
-<p>-Next is AC:L. The AC = Attack Complexity, which is the difficulty of actually exploiting the vulnerability. The L = Low, and meand that it has a low level of complexity and does not require any specialized conitions.</p>
-<p>-Then we have PR:N. The PR = Privileges Required, and represents the type of account access the attacker would need to actually exploit the vulnerability. The N = none, menaing that there is no need for an attacker to authenticate in order to conduct their attack.</p>
-<p>-Following that is UI:N. The UI = User Interaction, and represents whethere the attacker would need to involve another human in the process for the attack to be successful. The N = None required, meaning the attacker can go at this solo with no additional help.</p>
-<p>-After that is S:U. The S = Scope, which determines whethere the vulnerability can affect system components beyond the scope of the vulnerability. The U = Unchanged, meaning that if exploited, the vulnerability can only affect resources managed by the same security authority.</p>
-<p>-Then we have C:H. The C = Confidentiality, which describes the type of information disclosure that may occur if an attacker is successful. H = High, Meaning that if exploited, all information on the system is compromised.</p>
-<p>-Then I:H. The I = Integrity, which describes the type of alteration of the information might occur. H = High,  meaning that the attacker would be able to modify the data/ information at will if the exploit is successful.</p>
-<p>-Lastly it shows A:N. The A= Availability, which describes the level or type of disruption that may occur if an exploit was successful. N = None, which means that there will be no impact to availability. </p>
+ 
+  
+  <img width="1722" height="757" alt="metasploitable2_redo_critical_vuln2" src="https://github.com/user-attachments/assets/2919a9f1-112d-4d97-9a19-75eb175ab7f3" />
+
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;Next, I would like to address the CVSS Vector (AV:N/AC:L/Au:N/C:C/I:C/A:C) highlighted in green on the right-hand side of the photo above. Also note the CVSS Severity score of 10.0 right above the vector. Now due to the age of this vulnerability this is represented using CVSS version 2.0, which is outdated compared to the current version 3.0. Looking at this string of characters may be daunting and leave you wondering what value it may have. So, I am going to break this down and explain what it represents to give more insight into the severity of this vulnerability. 
+
+ 
+
+&nbsp;&nbsp;- The first metric we have listed is AV:N.  AV stands for Access Vector which represents HOW the vulnerability is exploited. Next, we see the N, which stands for network. This lets us know that the vulnerability may be exploited remotely, meaning that no local network access is needed in order to conduct the exploitation process. 
+
+ 
+
+&nbsp;&nbsp;- AC:L is going to be the next metric listed. AC stands for Access Complexity which represents the complexity of the attack required once the attacker has obtained access to the target system. The L listed after AC stands for low. Low means that no specialized access conditions or extenuating circumstances exist, and that the attack requires a low level of skill to carry out. Which means it's vulnerable to a wider array of attackers. 
+
+ 
+
+&nbsp;&nbsp;- Next you will see Au:N. Au represents Authentication. This describes the number of times an attacker will need to authenticate to the target to conduct the exploit. In this case we have the letter N next to the AU which represents none. So in this case, there is no authentication required in order for an attacker to exploit the vulnerability. 
+
+ 
+ 
+
+&nbsp;&nbsp;- Next in line is C:C. The first C stands for confidentiality. This metric represents the impact an attack would have on the confidentiality of information stored on the target system. Confidentiality can be thought of as protecting access to information and other data from unauthorized users. The second C stands for complete, which means that if an attacker is successful, they will be able to access and read all the systems data. 
+
+ 
+
+&nbsp;&nbsp;- Next is I:C. The I stands for Integrity. Think of integrity as whether or not the data can be altered or not. You want to ensure that your data remains accurate and un-modified unless done so by an authorized user. The C stands for complete, and means that if an attacker gains access, they will have the freedom to modify the data as they see fit. 
+
+ 
+
+&nbsp;&nbsp;- Last up we have the A. This represents the Availability of the system, so think accessibility. The C once again stands for Complete, meaning that if an attacker is successful, they will have the ability to completely shut down or restrict access to the system 
 
 #### Remediation
 The remidations is highlighted in green on the above photo. It requires updating Node.js to version 18.19.1, 20.11.1, 21.6.2, or later. 
@@ -73,14 +89,15 @@ The remidations is highlighted in green on the above photo. It requires updating
 
 
 
-#### Vulnerability (High)
-  <img width="1307" height="592" alt="ruby_rack_vuln" src="https://github.com/user-attachments/assets/54c292ff-6590-4f31-8237-fafd4bbff028" />
+### Vulnerability 2 (High)
+ <img width="1723" height="622" alt="metasploitable_redo_high_vuln_1" src="https://github.com/user-attachments/assets/da813311-fa8a-41a1-a902-ff9bf237c62d" />
+
 
 <p>The vulnerability with a severity score of high was the Ruby Rack < 2.2.14/3.0.16/3.1.14 DoS Vulnerability(meaning Ruby Rack version is less than versions 2.2.14/3.0.16/3.1.14) also known as CVE-2025-46727. 
 As shown in the scan results in the image above, this vulnerability provide an attacker the ability to cause a Dos situation by sending a specially crafted HTTP request, leading to memory exhaustion or pin CPU resources stalling or crashing the server. For more details please click the link here which will bring you to NIST's page for <a href="https://nvd.nist.gov/vuln/detail/CVE-2025-46727">CVE-2025-46727<a/>.</p>
  
-  <img width="1302" height="571" alt="cvss_score" src="https://github.com/user-attachments/assets/6359b9a7-3610-4b01-8ece-1f6ca404f74f" />
- 
+ <img width="1713" height="731" alt="metasploitable_redo_high_vuln_2" src="https://github.com/user-attachments/assets/6fc8e663-189b-4f59-ab91-251a5aad0764" />
+
 <p>In the photo above below you will see(highlighted in yellow) the CVSS v3.0 score of 7.5 along with the "vector" listed as AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H. I would like to provide details on what this vector is indicating piece by piece to provide a deeper understanding of what this string of characters represents.</p>
 <p>-First we see the AV:N, The AV = Attack Vector, which is how the attacker would exploit the vulnerability. The N = Network, which means that the attacker can exploit the vulnerability remotley over a network.</p> 
 <p>-Next we have AC:L, The AC = Attack Complexity, which is the difficulty of actually exploiting the vulnerability. The L = Low, and meand that it has a low level of complexity and does not require any specialized conitions.</p>
