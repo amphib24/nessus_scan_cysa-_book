@@ -17,7 +17,7 @@ while studying for the certification.
 
 ## Purpose   
 
-&nbsp;&nbsp;&nbsp;&nbsp;The purpose of this task was for me to get hands on experience running and analyzing a vulnerability scan using Nessus. At the time I was conducting this class I was in the process 
+&nbsp;&nbsp;&nbsp;&nbsp;The purpose of this task was for me to get hands on experience running and analyzing a vulnerability scan using Nessus. At the time I was conducting this activity I was in the process 
 of preparing for the CompTIA CYSA+ certification while enrolled at WGU. For educational purposes I will be choosing two of the vulnerabilities found during the scan. One will be rated as a critical vulnerability,
 and the other will be rated as a high vulnerability. 
 
