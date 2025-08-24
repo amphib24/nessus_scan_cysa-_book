@@ -1,24 +1,44 @@
-## Description
-<p>This project was part of the Sybex Comptia CYSA+ Study Guide written by Mike Chapple and David Seidl. The task was to download and install tenables Nessus vulnerability scanner 
-on to Kali linux, and then use the scanner to conduct an vulnerability scan on a server. I choose to use a Metasploitanle2 server running on a VM to use as my target instead of using one of the cloud service providers listed in the book. The server was on the same VM network as my Kali machine. I found this project to be a fun way to get hands on experience with everything I was learning while studying for the certification.</p>
 
+
+## Description
+&nbsp;&nbsp;&nbsp;&nbsp;This project was part of the Sybex CompTIA CYSA+ Study Guide written by Mike Chapple and David Seidl. The task was to download and install Tenable Nessus vulnerability scanner 
+on to Kali Linux, and then use the scanner to conduct a vulnerability scan on a server. I choose to use a Metasploitanle2 server running on a VM to use as my target instead of using one of the
+cloud service providers listed in the book. The server was on the same VM network as my Kali machine. I found this project to be a fun way to get hands on experience with everything I was learning 
+while studying for the certification.
 ## Tools used
-<p>-Oracle VirtualBox</p>
-<p>-Kali Linux</p>
-<p>-Nessus Vulnerability Scanner</p>
-<p>-Metasploitable 2</p>
+
+-Oracle VirtualBox
+
+-Kali Linux
+
+-Nessus Vulnerability Scanner
+
+-Metasploitable 2
+
+## Purpose   
+
+&nbsp;&nbsp;&nbsp;&nbsp;The purpose of this task was for me to get hands on experience running and analyzing a vulnerability scan using Nessus. At the time I was conducting this class I was in the process 
+of preparing for the CompTIA CYSA+ certification while enrolled at WGU. For educational purposes I will be choosing two of the vulnerabilities found during the scan. One will be rated as a critical vulnerability,
+and the other will be rated as a high vulnerability. 
 
 ## Process 
 
-<p>I started a Metasploitable 2 server on VirtualBox and had Nessus running on Kali using VirtualBox as well, as you can see by the IP addresses highlighted in blue they are both on the same network.</p>
+&nbsp;&nbsp;&nbsp;&nbsp;I started a Metasploitable 2 server on VirtualBox and had Nessus running on Kali using VirtualBox as well, as you can see by the IP addresses highlighted in blue they are both on the same network.
+ 
+  
   <img width="1225" height="150" alt="metasploitable_redo" src="https://github.com/user-attachments/assets/fb279745-9940-4c82-8048-153419c26fcb" />
 
-<p>Scan Complete</p>
+
+&nbsp;&nbsp;&nbsp;&nbsp;Here is a visual high-level overview of the completed scan.
   
+ 
   <img width="1707" height="625" alt="metaploitable_redo_scan_complete" src="https://github.com/user-attachments/assets/f645e3c6-16cc-4664-bb4c-16f61ee054af" />
 
+
 ## Results
-<p>There was a total of 70 vulnerabilities found during the scan as you can see circled in red in the below photo.There was 9 critical, 7 high, 23 medium, and 9 low, the rest were rated as info.</p>
+&nbsp;&nbsp;&nbsp;&nbsp;There were a total of 70 vulnerabilities found during the scan as you can see circled in red in the below photo. There was 9 critical, 7 high, 23 medium, and 9 low, the rest were rated as info.
+
+
 <img width="1718" height="623" alt="metasploitable_redo_70" src="https://github.com/user-attachments/assets/cdc5bd0a-101b-40b5-836d-9dd84c964c8d" />
 
 #### Vulnerability (Critical)
