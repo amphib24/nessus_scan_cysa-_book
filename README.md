@@ -10,14 +10,16 @@ on to Kali linux, and then use the scanner to conduct an vulnerability scan on a
 
 ## Process 
 
-<p>I started a Metasploitable 2 server on VirtualBox and had Nessus running on Kali using VirtualBox as well.</p>
-  <img width="766" height="200" alt="biznizz" src="https://github.com/user-attachments/assets/549d2ccd-55b3-4ccf-a378-ca8ec14b8370" />
+<p>I started a Metasploitable 2 server on VirtualBox and had Nessus running on Kali using VirtualBox as well, as you can see by the IP addresses highlighted in blue they are both on the same network.</p>
+  <img width="1225" height="150" alt="metasploitable_redo" src="https://github.com/user-attachments/assets/fb279745-9940-4c82-8048-153419c26fcb" />
+
 <p>Scan Complete</p>
-  <img width="600" height="242" alt="scan_resultsresize" src="https://github.com/user-attachments/assets/e220337e-ec4f-4d1c-a1d4-d04f72c3b500" />
+  
+  <img width="1707" height="625" alt="metaploitable_redo_scan_complete" src="https://github.com/user-attachments/assets/f645e3c6-16cc-4664-bb4c-16f61ee054af" />
 
 ## Results
-<p>Overall 71 of the results were rated as info, 3 rated at medium, 5 rated at high, and 2 rated at critical. Below I will give a brief analysis of 1 of the
-critical vulnerabilities and 1 of the vulnerabilities rated as high, just to briefly showcase my analysis</p>
+<p>There was a total of 70 vulnerabilities found during the scan as you can see circled in red in the below photo.There was 9 critical, 7 high, 23 medium, and 9 low, the rest were rated as info.</p>
+<img width="1718" height="623" alt="metasploitable_redo_70" src="https://github.com/user-attachments/assets/cdc5bd0a-101b-40b5-836d-9dd84c964c8d" />
 
 #### Vulnerability (Critical)
 
