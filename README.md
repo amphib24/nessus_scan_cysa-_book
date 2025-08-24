@@ -67,7 +67,7 @@ and the other will be rated as a high vulnerability.
 
  
 
-&nbsp;&nbsp;- Next you will see Au:N. Au represents Authentication. This describes the number of times an attacker will need to authenticate to the target to conduct the exploit. In this case we have the letter N next to the AU which represents none. So in this case, there is no authentication required in order for an attacker to exploit the vulnerability. 
+&nbsp;&nbsp;- Next you will see Au:N. Au represents Authentication. This describes the number of times an attacker will need to authenticate to the target to conduct the exploit. In this case we have the letter N next to the AU which represents none. So, in this case, there is no authentication required in order for an attacker to exploit the vulnerability. 
 
  
  
@@ -80,7 +80,7 @@ and the other will be rated as a high vulnerability.
 
  
 
-&nbsp;&nbsp;- Last up we have the A. This represents the Availability of the system, so think accessibility. The C once again stands for Complete, meaning that if an attacker is successful, they will have the ability to completely shut down or restrict access to the system 
+&nbsp;&nbsp;- Last up we have the A:C. This represents the Availability of the system, so think accessibility. The C once again stands for Complete, meaning that if an attacker is successful, they will have the ability to completely shut down or restrict access to the system 
 
 #### Remediation
 The remidations is highlighted in green on the above photo. It requires updating Node.js to version 18.19.1, 20.11.1, 21.6.2, or later. 
@@ -93,20 +93,39 @@ The remidations is highlighted in green on the above photo. It requires updating
  <img width="1723" height="622" alt="metasploitable_redo_high_vuln_1" src="https://github.com/user-attachments/assets/da813311-fa8a-41a1-a902-ff9bf237c62d" />
 
 
-<p>The vulnerability with a severity score of high was the Ruby Rack < 2.2.14/3.0.16/3.1.14 DoS Vulnerability(meaning Ruby Rack version is less than versions 2.2.14/3.0.16/3.1.14) also known as CVE-2025-46727. 
-As shown in the scan results in the image above, this vulnerability provide an attacker the ability to cause a Dos situation by sending a specially crafted HTTP request, leading to memory exhaustion or pin CPU resources stalling or crashing the server. For more details please click the link here which will bring you to NIST's page for <a href="https://nvd.nist.gov/vuln/detail/CVE-2025-46727">CVE-2025-46727<a/>.</p>
+&nbsp; &nbsp; &nbsp; &nbsp; The next vulnerability I will be going over has a severity rating of high as you can see circled in red in the above photo. The system is running a very outdated program called rlogin or remote login. As the name suggests it was used to access a computer remotely over a network and provided the ability to access the command-line. Data is sent in the clear between the server and client meaning that it has no security in transit and may be read by anyone smart enough to gain access (Man in the middle attack). The program also had flaws in its authentication process making it easy to crack credentials, or better yet for an attacker they may be able to log in with no password at all.  
+
+&nbsp; &nbsp; &nbsp; &nbsp; This vulnerability is listed as CVE-1999-0651. I will provide a link to NIST’s NVD for the CVE however there really isn’t much useful information there outside of what was provided by Nessus. The page can be found here at <a href="https://nvd.nist.gov/vuln/detail/CVE-1999-0651">CVE-1999-0651</a>. Lastly you can see that the CVVS V2.0 base score is 7.5 which is located right above the CVSS vector highlighted in green. Next, I will be providing a breakdown of what the CVSS vector represents. 
  
  <img width="1713" height="731" alt="metasploitable_redo_high_vuln_2" src="https://github.com/user-attachments/assets/6fc8e663-189b-4f59-ab91-251a5aad0764" />
 
-<p>In the photo above below you will see(highlighted in yellow) the CVSS v3.0 score of 7.5 along with the "vector" listed as AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H. I would like to provide details on what this vector is indicating piece by piece to provide a deeper understanding of what this string of characters represents.</p>
-<p>-First we see the AV:N, The AV = Attack Vector, which is how the attacker would exploit the vulnerability. The N = Network, which means that the attacker can exploit the vulnerability remotley over a network.</p> 
-<p>-Next we have AC:L, The AC = Attack Complexity, which is the difficulty of actually exploiting the vulnerability. The L = Low, and meand that it has a low level of complexity and does not require any specialized conitions.</p>
-<p>-Next we see the PR:N. The PR = Privileges Required, and represents the type of account access the attacker would need to actually exploit the vulnerability. The N = none, menaing that there is no need for an attacker to authenticate in order to conduct their attack.</p></p> 
-<p>- Next we see the UI:N, The UI = User Interaction, and represents whethere the attacker would need to involve another human in the process for the attack to be successful. The N = None required, meaning the attacker can go at this solo with no additional help.</p>
-<p>- The S:U breaks down as S = Scope, which determines whethere the vulnerability can affect system components beyond the scope of the vulnerability. The U = Unchanged, meaning that if exploited, the vulnerability can only affect resources managed by the same security authority.</p>
-<p>-C:N The C = Confidentiality, which describes the type of information disclosure that may occur if an attacker is successful. N = None wich means the confidentiality facotr will not be impacted.</p>
-<p>-I:N The I = Integrity, which describes the type of alteration of the information might occur. N = None meaning that integrtiy will not be impacted if exploited. </p>
-<p>-A:H The A= Availability, which describes the level or type of disruption that may occur if an exploit was successful meand that if the vulnerability is exploited. H = High meaning that, availability will be comepletly shut down if exploited.</p>
+&nbsp; &nbsp; &nbsp; &nbsp;Next, I would like to address the CVSS Vector (AV:N/AC:L/Au:N/C:P/I:P/A:P) highlighted in green on the right-hand side of the photo above. Now due to the age of this vulnerability this is represented using CVSS version 2.0, which is outdated compared to the current version 3.0. Looking at this string of characters may be daunting and leave you wondering what value it may have. So, I am going to break this down and explain what it represents to give more insight into the severity of this vulnerability. Notice the P at the end of C,I, and A on this one. Those 3 metrics have an impact on why this is scored lower compared to the critical vulnerability discussed above. As you will read in their descriptions below the level of access and capabilities the attacker would have are a bit lower risk. 
+
+ 
+
+&nbsp;&nbsp;- The first metric we have listed is AV:N.  AV stands for Access Vector which represents HOW the vulnerability is exploited. Next, we see the N, which stands for network. This lets us know that the vulnerability may be exploited remotely, meaning that no local network access is needed in order to conduct the exploitation process. 
+
+ 
+
+&nbsp;&nbsp;- AC:L is going to be the next metric listed. AC stands for Access Complexity which represents the complexity of the attack required once the attacker has obtained access to the target system. The L listed after AC stands for low. Low means that no specialized access conditions or extenuating circumstances exist, and that the attack requires a low level of skill to carry out. Which means it's vulnerable to a wider array of attackers. 
+
+ 
+
+&nbsp;&nbsp;- Next you will see Au:N. Au represents Authentication. This describes the number of times an attacker will need to authenticate to the target to conduct the exploit. In this case we have the letter N next to the AU which represents none. So, in this case, there is no authentication required in order for an attacker to exploit the vulnerability. 
+
+ 
+ 
+
+&nbsp;&nbsp;- Next in line is C:P. The first C stands for confidentiality. This metric represents the impact an attack would have on the confidentiality of information stored on the target system. Confidentiality can be thought of as protecting access to information and other data from unauthorized users. Next, we have a P which stands for partial, which in the case of confidentiality means that there is a risk of substantial disclosure of information, however the attacker does not have control over what is obtained. 
+
+ 
+
+&nbsp;&nbsp;- Next is I:P. The I stands for Integrity. Think of integrity as whether or not the data can be altered or not. You want to ensure that your data remains accurate and un-modified unless done so by an authorized user. The p stands for partial, which in the case of integrity means that some modification of files is possible, but the scope is limited, and the attacker does not have control over what can be modified. 
+
+ 
+
+&nbsp;&nbsp;- Last up we have the A:P. This represents the Availability of the system, so think accessibility. The P once again stands for partial, meaning that if an attacker is successful, performance will be reduced or/and there will be interruptions in resource availability. 
+
 
 #### Remidiation
 <p>The good news is as you can see highlighted in green there is a easy way to remidiate this vulnerability and the is to upgrade to a Rack version 2.2.14, 3.0.16, 3.1.14, or later.</p>
